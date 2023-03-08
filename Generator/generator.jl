@@ -1,20 +1,27 @@
 import Pkg
-Pkg.add("GaussianRandomFields")
-Pkg.add("Plots")
+#Pkg.add("GaussianRandomFields")
+#Pkg.add("Plots")
 using Plots
-Pkg.add("SpecialFunctions")
+#Pkg.add("SpecialFunctions")
 using SpecialFunctions
 using GaussianRandomFields
 using DelimitedFiles
 
 # input
 
-aux = 0.5
+#aux = -2.5
+aux = -4.0
 cl = 10.0^aux
 
-np = 1025
+#np = 1025
+#np = 2049
+#np = 4097
+#np = 8193
+#np =16385
+np =32769
 
-nKL = 1500
+nKL = 20000
+
 exponential = SquaredExponential(cl) # 0.1 is the length scale λ
 cov = CovarianceFunction(1, exponential) # 1 is the number of dimensions.
 pts = range(-0.5, stop=0.5, length=np) # 1001 is the number of points
@@ -24,10 +31,16 @@ print(rel_error(grf))
 print('\n')
 
 n = 10
-num_realization =5000
+num_realization =500
 dir = string("cl", aux, "_np", np)
+# print(dir)
+# print(string(dir,"/","initial_values_", 0, ".txt"))
 
 mkpath(dir)
+
+dir2 = string("_Y_values/cl", aux, "_np", np)
+mkpath(dir2)
+
 for pid in 1:num_realization
     xi=randn(randdim(grf))
     y = sample(grf; xi )
@@ -68,7 +81,7 @@ for pid in 1:num_realization
         close(file)
     end
 
-    open(string(dir,"/","xi_values", pid - 1, ".txt"), "w") do file1
+    open(string(dir2,"/","xi_values", pid - 1, ".txt"), "w") do file1
         write(file1, string(length(xi)))
         write(file1, "\n")
         for di in 1:length(xi)

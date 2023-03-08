@@ -1,0 +1,24 @@
+#--------------------------------------------------------------------------------------------
+np =16385
+Generally 20000 Y terms used. Obviously, way too many for large correlation lengths, even posibly larger than matrix size (depending on element order).
+It generally thows out many terms.
+
+# -4, 10000, error 3e-5, lambda ~ 4e-4, no error message
+# -4, 15000, error 1e-6, lambda ~ 3.2e-4, no error message
+# -4, 20000, error 1.8e-8, lambda ~ 2.86e-4, no error message
+# -3.5, 20000, error 3.33e-16, lambda ~ 8.3e-4, 7623 neg eig >= 1e-24
+# -3, 20000, error 2.23-16, lambda ~ 0.00277, equivalent eigenvalue problem is not SPD
+#-2.5, 20000,error 1.11-16, lambda ~ 0.008, equivalent eigenvalue problem is not SPD, 18747 eigenvalues >= 5.90e-24
+# -2, 20000, error 3.33-16, lambda ~ 0.03226, equivalent eigenvalue problem is not SPD
+#-1.5, 20000,error 3.33-16, lambda ~ 0.0909, equivalent eigenvalue problem is not SPD, 19875 eigenvalues >= -1.0166e-22
+# -1, 20000, error 3.33-16, lambda ~ 0.2, 19953 eigenvalues >= -1.649e-22
+# -1, 2000, error 1.11-16, lambda ~ 0.5, 1955 eigenvalues >= -1.649e-22
+# -1, 100,  error 2.22-16, lambda ~ 0.33, 54 eigenvalues >= 1.01-19
+# -1, 50,  error 0.0, lambda ~ 0.33, 5 eigenvalues >= -1.15-18
+#-0.5, 20000, error 0.0, lambda ~ 0.5, 19979 eigenvalues >= -1.708e-22
+
+
+cor length -3.0 -> 2102 realizations
+cor length -3.5 -> 1409 realizations
+cor length -3.0 -> 1223 realizations
+others 5000 realizations
