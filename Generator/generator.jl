@@ -31,7 +31,7 @@ print(rel_error(grf))
 print('\n')
 
 n = 10
-num_realization =500
+num_realization =5000
 dir = string("cl", aux, "_np", np)
 # print(dir)
 # print(string(dir,"/","initial_values_", 0, ".txt"))
